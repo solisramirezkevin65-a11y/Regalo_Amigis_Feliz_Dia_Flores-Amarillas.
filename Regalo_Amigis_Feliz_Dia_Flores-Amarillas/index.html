@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa de Flores Amarillas 🌻</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #5d4037;
+            overflow-x: hidden;
+            /* Fondo amarillo */
+            background:
+                radial-gradient(
+                    circle at center,
+                    #fffde7 0%,
+                    #fff8c4 45%,
+                    #ffe082 100%
+                );
+        }
+
+        /* =========================================
+           CONTENEDOR PRINCIPAL
+        ========================================= */
+        .pagina {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 30px 20px;
+        }
+
+        /* =========================================
+           DECORACIONES
+        ========================================= */
+        .decoracion {
+            position: absolute;
+            color: #fbc02d;
+            font-size: 2rem;
+            opacity: 0.75;
+            pointer-events: none;
+            animation: aparecerFlotar 4s ease-in-out infinite;
+        }
+
+        .corazon1 {
+            top: 18%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+        .corazon2 {
+            bottom: 18%;
+            right: 27%;
+            animation-delay: 1.5s;
+        }
+
+        .brillo1 {
+            top: 25%;
+            right: 32%;
+            font-size: 2.3rem;
+            animation-delay: 0.8s;
+        }
+
+        .brillo2 {
+            bottom: 25%;
+            left: 31%;
+            font-size: 1.8rem;
+            animation-delay: 2s;
+        }
+
+
+        @keyframes aparecerFlotar {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.55;
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(8deg);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================
+           RAMO
+        ========================================= */
+
+        .bouquet-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+
+
+        .bouquet-img {
+            width: 390px;
+            max-width: 85vw;
+            height: auto;
+            display: block;
+            mix-blend-mode: multiply;
+            filter:
+                drop-shadow(0 15px 18px rgba(112, 77, 0, 0.20));
+            animation: flotar 4s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* =========================================
+           BOTÓN REGALO
+        ========================================= */
+        .gift-btn {
+            width: 120px;
+            height: 110px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffd95a,
+                    #ffc107
+                );
+
+            border: 3px solid #ffb300;
+            border-radius: 25px;
+            font-size: 3.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 8px 18px rgba(121, 85, 0, 0.20);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+            position: relative;
+            z-index: 3;
+        }
+
+        .gift-btn:hover {
+            transform:
+                scale(1.08)
+                rotate(-2deg);
+            box-shadow:
+                0 12px 25px rgba(121, 85, 0, 0.28);
+        }
+
+        .gift-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Brillitos alrededor del regalo */
+        .gift-btn::before,
+        .gift-btn::after {
+            content: "✦";
+            position: absolute;
+            color: #f9a825;
+            font-size: 1.5rem;
+            animation: brillo 1.8s infinite;
+        }
+
+        .gift-btn::before {
+            left: -35px;
+            top: 10px;
+        }
+
+        .gift-btn::after {
+            right: -35px;
+            bottom: 10px;
+            animation-delay: 0.8s;
+        }
+
+
+        @keyframes brillo {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* =========================================
+           TARJETA
+        ========================================= */
+        .note-card {
+            display: none;
+            width: 470px;
+            max-width: 90vw;
+            margin-top: 25px;
+            padding: 30px 28px;
+            background:
+                rgba(255, 255, 255, 0.88);
+            border-radius: 22px;
+            border: 3px dashed #fbc02d;
+            box-shadow:
+                0 15px 35px rgba(120, 83, 0, 0.16);
+            position: relative;
+            z-index: 4;
+            animation: aparecer 0.6s ease-out forwards;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(20px)
+                    scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        /* =========================================
+           TITULO
+        ========================================= */
+        .note-card h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #f9a825;
+            font-size: 1.8rem;
+        }
+
+        /* =========================================
+           TEXTO
+        ========================================= */
+        .note-card p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #5d4037;
+        }
+
+        /* =========================================
+           CÓDIGO
+        ========================================= */
+        #codigo-secreto {
+            display: none;
+        }
+
+        /* =========================================
+           BOTÓN COPIAR
+        ========================================= */
+        .copy-btn {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd54f,
+                    #ffb300
+                );
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow:
+                0 5px 12px rgba(245, 166, 35, 0.25);
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+
+            margin-top: 12px;
+        }
+
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 18px rgba(245, 166, 35, 0.35);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* =========================================
+           PEQUEÑAS FLORES DECORATIVAS
+        ========================================= */
+        .flores-decorativas {
+            position: absolute;
+            bottom: 25px;
+            font-size: 1.4rem;
+            opacity: 0.65;
+            letter-spacing: 8px;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+        @media (max-width: 600px) {
+            .pagina {
+                padding: 20px 15px;
+            }
+            .bouquet-img {
+                width: 330px;
+            }
+            .gift-btn {
+                width: 105px;
+                height: 95px;
+                font-size: 2.7rem;
+            }
+            .note-card {
+                padding: 25px 20px;
+            }
+            .note-card h3 {
+                font-size: 1.5rem;
+            }
+            .note-card p {
+                font-size: 1rem;
+            }
+            .decoracion {
+                display: none;
+            }
+        }
+        /* NUEVOS ELEMENTOS */
+        .sorpresa-titulo {
+            margin: 0 0 15px 0;
+            color: #f9a825;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .bouquet-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .bouquet-subtitulo {
+            color: #8d6e63;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .gift-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .texto-regalo {
+            background: white;
+            color: #8d6e63;
+            padding: 8px 15px;
+            border-radius: 12px;
+            border: 2px solid #fbc02d;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(121, 85, 0, 0.15);
+        }
+        .mensaje-discord {
+            position: relative;
+            margin-top: 18px;
+            padding: 14px 20px;
+            max-width: 360px;
+            background: white;
+            color: #8d6e63;
+            border: 2px solid #fbc02d;
+            border-radius: 18px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+            box-shadow: 0 5px 12px rgba(121, 85, 0, 0.15);
+            animation: aparecer 0.6s ease-out forwards;
+        }
+
+        /* Piquito del globo */
+        .mensaje-discord::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-right: 2px solid #fbc02d;
+            border-bottom: 2px solid #fbc02d;
+            transform: translateX(-50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <main class="pagina">
+
+        <!-- =====================================
+             DECORACIONES
+        ====================================== -->
+        <div class="decoracion corazon1">♡</div>
+        <div class="decoracion corazon2">♡</div>
+        <div class="decoracion brillo1">✦</div>
+        <div class="decoracion brillo2">✧</div>
+
+        <!-- =====================================
+             RAMO DE FLORES
+        ====================================== -->
+    <h1 class="sorpresa-titulo">¡¡Sorpresa!! ¡¡Feliz Dia Amigis!!</h1>
+    <div class="bouquet-row"></div>
+        <div class="bouquet-container">
+            <img
+                src="Ramo de rosas amarillas aislado.png"
+                alt="Ramo de flores amarillas"
+                class="bouquet-img"
+            > 
+        </div>
+
+        <div class="bouquet-subtitulo">
+            Para ti :3
+        </div>
+
+        <!-- =====================================
+             REGALO
+        ====================================== -->
+        <div class="gift-area">
+
+        <div class="texto-regalo">
+            Preciona aqui
+        </div>
+        <button
+            class="gift-btn"
+            onclick="mostrarNota()"
+            title="¡Abre tu regalo!"
+        >
+            🎁
+        </button>
+        <!-- =====================================
+             TARJETA
+        ====================================== -->
+        <div id="nota" class="note-card">
+            <h3>
+                ✨💛PARA MI MEJOR AMIGIS💛✨
+            </h3>
+            <p>
+                Bueno ante todo primeramente muy buenas tardes,
+                espero que te encuentres super bien y que todo valla bien por haya ;>.
+            <p>
+                Bueno yo de mi parte pense en preparte esta sorpresa y tambien quiero
+                recalcar que todo esto lo escribi desde mis propias palabras.
+            <p>
+                Y como ya me imagino que vistes el tema y de que se trata este dia...
+                Bueno de mi parte te doy estas flores amarillas especialmente para ti,
+                para recordarte lo especial que eres para mi🥹❤️‍🩹. Eres una gran persona
+                y una gran Amiga y deverdad te deseo todo lo mejor del mundo 🌎✨.
+            <p>
+                Y no solo eso si no que tambien con el pasar del tiempo... Me has
+                demostrado que hay amistades por las que valen la pena quedarce y tu eres
+                una de ellas 💖.
+            <p>
+                Deverdad estoy tan agradecido contigo simplemente por todo. Muchas gracias
+                por escucharme, por comprenderme y estar ahi cuando me hacia falta 🤧❤️‍🩹.
+            <p>
+                Y clarooo!!... Tampoco no podia olvidarme de las partidas que tubimos que para serte Honesto,
+                si me divierto mucho y la paso demaciado chevere deverdad 😎😄.
+            <p>
+                Espero mucho que mas adelante sigamos costrullendo mas bellos y hermosos momentos juntos 🥹👊.
+            <p>
+                De mi parte yo te mando un fuerte abrazo virtual 🫂😊, y de la misma manera tambien
+                te quiero recordar a ti que. Si nesecitas hablar con alguien en quien te escuche.
+            <p>
+                Puedes contar conmigo 😉😁✨💙.
+            </p>
+                TKMMMM!!! AMIGISSSSSSSSSSSS!!!! :3
+            <p>
+                <br>
+                Ahhh!!! y tambien aqui tienes un pequeño regalito de mi parte:
+            </p>
+
+            <div class="mensaje-discord">
+                💬✨ Revisa tu Discord para reclamar tu regalito 🎁
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="window.open('https://www.roblox.com/es/redeem?locale=es_es', '_blank')"
+            >
+            Reclamar Regalito 🎁
+            </button>
+        </div>
+        <!-- =====================================
+             DECORACIÓN INFERIOR
+        ====================================== -->
+        <div class="flores-decorativas">
+            🌼 ✨ 🌼 ✨ 🌼
+        </div>
+    </main>
+    <script>
+
+        // Mostrar la tarjeta
+        function mostrarNota() {
+            const nota = document.getElementById("nota");
+            nota.style.display = "block";
+        }
+    </script>
+</body>
+</html>
